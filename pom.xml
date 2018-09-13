@@ -16,13 +16,14 @@
     <url>https://github.com/vdvoretskyi/currency-exchange-rates</url>
 
     <organization>
-        <name>Datamuse</name>
+        <name>DataMuse</name>
         <url>https://www.datamuse.info</url>
     </organization>
 
     <scm>
-        <url>https://github.com/vdvoretskyi/currency-exchange-rates</url>
         <connection>scm:git:git://github.com/vdvoretskyi/currency-exchange-rates.git</connection>
+        <developerConnection>scm:git:git://github.com/vdvoretskyi/currency-exchange-rates.git</developerConnection>
+        <url>https://github.com/vdvoretskyi/currency-exchange-rates</url>
     </scm>
 
     <issueManagement>
@@ -33,7 +34,7 @@
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <url>https://raw.githubusercontent.com/vdvoretskyi/currency-exchange-rates/master/LICENSE.md</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -44,7 +45,7 @@
             <name>Vladyslav Dvoretskyi</name>
             <email>jasper.ua@gmail.com</email>
             <url>https://www.facebook.com/vladislav.dvoretsky</url>
-            <organization>Datamuse</organization>
+            <organization>DataMuse</organization>
             <organizationUrl>https://www.datamuse.info</organizationUrl>
             <roles>
                 <role>developer</role>
@@ -57,7 +58,7 @@
             <name>Alex Shesterov</name>
             <email>alex.shesterov@gmail.com</email>
             <url>https://www.facebook.com/alex.shesterov</url>
-            <organization>Datamuse</organization>
+            <organization>DataMuse</organization>
             <organizationUrl>https://www.datamuse.info</organizationUrl>
             <roles>
                 <role>developer</role>
@@ -109,7 +110,7 @@
         <maven.gpgPlugin.version>1.6</maven.gpgPlugin.version>
         <maven.sourcePlugin.version>3.0.1</maven.sourcePlugin.version>
         <maven.javadocPlugin.version>3.0.1</maven.javadocPlugin.version>
-        <maven.nexusStagingPlugin>1.6.7</maven.nexusStagingPlugin>
+        <maven.nexusStagingPlugin.version>1.6.7</maven.nexusStagingPlugin.version>
     </properties>
 
     <dependencies>
@@ -232,22 +233,18 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${maven.jarPlugin.version}</version>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>${maven.installPlugin.version}</version>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>${maven.sitePlugin.version}</version>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>${maven.deployPlugin.version}</version>
             </plugin>
@@ -266,7 +263,6 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
                         <version>${maven.sourcePlugin.version}</version>
                         <executions>
@@ -278,9 +274,7 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <!-- To generate javadoc -->
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <version>${maven.javadocPlugin.version}</version>
                         <executions>
@@ -294,7 +288,6 @@
                         </executions>
                     </plugin>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
                         <version>${maven.gpgPlugin.version}</version>
                         <executions>
@@ -308,9 +301,15 @@
                         </executions>
                     </plugin>
                     <plugin>
+                        <artifactId>maven-deploy-plugin</artifactId>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                    <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>${maven.nexusStagingPlugin}</version>
+                        <version>${maven.nexusStagingPlugin.version}</version>
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>oss.sonatype.org</serverId>
